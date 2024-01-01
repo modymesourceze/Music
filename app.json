@@ -1,7 +1,7 @@
 {
-    "name": "Alexa Music",
-    "description": "Deploy Alexa music on railwey make sure to star the projecte.",
-    "logo": "https://telegra.ph/file/ba967503682a55beaedd3.png",
+    "name": "🔱 𝐒𝐎𝐔𝐑𝐂𝐄 𝐙𝐄 🔱",
+    "description": "زد إي ميوزك افضل السورسات العربيه.",
+    "logo": "https://telegra.ph/file/c4f9c850312c8891385a9.jpg",
     "keywords": [
     "python3",
     "telegram",
@@ -14,48 +14,69 @@
     "stack": "container",
     "env": {
       "API_ID": {
-        "description": "Get this value from https://my.telegram.org",
-        "value": "",
+        "description": "الايبي ايدي حط ",
+        "value": "25281175",
         "required": true
       },
       "API_HASH": {
-        "description": "Get this value from https://my.telegram.org",
+        "description": "الايبي هاش حط",
+        "value": "6d99cb2b60a2c519fc1f99bd19565730",
+        "required": true          
+      },
+      "BOT_TOKEN": {
+        "description": "توكن البوت حبببي",
         "value": "",
         "required": true
       },
-      "BOT_TOKEN": {
-        "description": "A Bot's token from Botfather",
-        "value": "",
+      "START_IMG_URL": {
+        "description": "صورة الستارت",
+        "value": "https://telegra.ph/file/911a6335a2e3c796659b1.jpg",
         "required": true
       },
       "OWNER_ID": {
-        "description": "The user id(s) of user(s) whom you would like to add as a OWNER. Multiple values shall be seperated with a space.",
-        "value": "5303133436",
+        "description": "حط ايدي المالك",
+        "value": "6581896306",
         "required": true
       },        
       "MONGO_DB_URI": {
-        "description": "Mongo DB URL",
-        "value": "",
+        "description": "كود المونجو حب",
+        "value": "mongodb+srv://ersh:antwai@cluster0.pforz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+        "required": true
+          },
+      "MUSIC_BOT_NAME": {
+        "description": "اسم بوتك بالعربي",
+        "value": "توم",
         "required": true
       },
       "STRING_SESSION": {
-        "description": "A Pyrogram Session Get It From  Here @Session_Generator_Robot.",
+        "description": "جلسه بايروجرام واحد فقط",
         "value": "",
         "required": true
       },
       "HEROKU_API_KEY": {
-        "description": "Your Heroku account's API key",
+        "description": "ضع مفتاح هيروكو - https://dashboard.heroku.com/account",
         "value": "",
         "required": false
       },
+      "ASS_US": {
+        "description": "يوزر حساب المساعد",
+        "value": "",
+        "required": false
+      },
+      "ASS_ID": {
+        "description": "ايدي حساب المساعد",
+        "value": "",
+        "required": false
+      },
+
       "HEROKU_APP_NAME": {
-        "description": "Your heroku app name",
+        "description": "اسم التطبيق اول فار",
         "value": "",
         "required": false
       },
       "LOG_GROUP_ID": {
-        "description": "Your Log Group ID, add your bot and promote as an admin with full rights!. Use only Group. Please don't use Channel ID.",
-        "value": "",
+        "description": "ايدي كروب السجل حطه",
+        "value": "-1002015543535",
         "required": true
       }
     },
