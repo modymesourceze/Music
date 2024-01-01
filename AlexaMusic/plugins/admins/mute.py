@@ -1,18 +1,17 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+#
+# Copyright (C) 2021-2022 by Alexa_Help@Github, < https://github.com/Jankarikiduniya >.
+# A Powerful Music Bot Property Of Rocks Indian Largest Chatting Group
 
-""""
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
-
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
+# Kanged By © @Dr_Asad_Ali
+# Rocks © @Shayri_Music_Lovers
+# Owner Asad Ali
+# Harshit Sharma
+# All rights reserved. © Alisha © Alexa © Yukki
 
 
 from pyrogram import filters
 from pyrogram.types import Message
-
+from strings.filters import command
 from config import BANNED_USERS
 from strings import get_command
 from AlexaMusic import app
@@ -24,7 +23,9 @@ from AlexaMusic.utils.decorators import AdminRightsCheck
 MUTE_COMMAND = get_command("MUTE_COMMAND")
 
 
-@app.on_message(filters.command(MUTE_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(
+    command(["كتم","اسكت"]) & filters.group & ~filters.edited & ~BANNED_USERS
+)
 @AdminRightsCheck
 async def mute_admin(cli, message: Message, _, chat_id):
     if not len(message.command) == 1 or message.reply_to_message:
