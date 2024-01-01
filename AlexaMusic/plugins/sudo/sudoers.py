@@ -1,4 +1,4 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
+# Copyright (C) 2023 by ZeSupport @ Github, < https://github.com/TheTeamAlexa >
 # Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
 
 """"
@@ -31,7 +31,7 @@ SUDOUSERS_COMMAND = get_command("SUDOUSERS_COMMAND")
 async def useradd(client, message: Message, _):
     if MONGO_DB_URI is None:
         return await message.reply_text(
-            "**ᴅᴜᴇ ᴛᴏ {MUSIC_BOT_NAME}'s ᴩʀɪᴠᴀᴄʏ ɪssᴜᴇs, ʏᴏᴜ ᴄᴀɴ'ᴛ ᴍᴀɴᴀɢᴇ sᴜᴅᴏ ᴜsᴇʀs ᴏɴ {MUSIC_BOT_NAME} ᴅᴀᴛᴀʙᴀsᴇ.\n\n ᴩʟᴇᴀsᴇ ᴀᴅᴅ ʏᴏᴜʀ ᴍᴏɴɢᴏ ᴅᴀᴛᴀʙᴀsᴇ ɪɴ ᴠᴀʀs ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ.**"
+            "**بسبب {MUSIC_BOT_NAME} مشكلات الخصوصية، لا يمكنك إدارة مستخدمي SUDO {MUSIC_BOT_NAME} قاعدة البيانات.\n\n يرجى إضافة قاعدة بيانات MONGO الخاصة بك في VARS لاستخدام هذه الميزة.**"
         )
     if not message.reply_to_message:
         if len(message.command) != 2:
@@ -69,7 +69,7 @@ async def useradd(client, message: Message, _):
 async def userdel(client, message: Message, _):
     if MONGO_DB_URI is None:
         return await message.reply_text(
-            "**ᴅᴜᴇ ᴛᴏ {MUSIC_BOT_NAME}'s ᴩʀɪᴠᴀᴄʏ ɪssᴜᴇs, ʏᴏᴜ ᴄᴀɴ'ᴛ ᴍᴀɴᴀɢᴇ sᴜᴅᴏ ᴜsᴇʀs ᴏɴ {MUSIC_BOT_NAME} ᴅᴀᴛᴀʙᴀsᴇ.\n\n ᴩʟᴇᴀsᴇ ᴀᴅᴅ ʏᴏᴜʀ ᴍᴏɴɢᴏ ᴅᴀᴛᴀʙᴀsᴇ ɪɴ ᴠᴀʀs ᴛᴏ ᴜsᴇ ᴛʜɪs ғᴇᴀᴛᴜʀᴇ.**"
+            "**نظرًا لمشاكل خصوصية {MUSIC_BOT_NAME}، لا يمكنك إدارة SUDO UAERS على قاعدة بيانات {MUSIC_BOT_NAME}.\n\n الرجاء إضافة قاعدة بيانات MONGO الخاصة بك في VARS لاستخدام هذه الميزة**"
         )
     if not message.reply_to_message:
         if len(message.command) != 2:
@@ -103,7 +103,7 @@ async def userdel(client, message: Message, _):
 async def sudoers_list(client, message: Message, _):
     if message.from_user.id not in SUDOERS:
         return await message.reply_text(
-            "» **😁 ʜᴇʜᴇʜᴇ ᴏɴʟʏ ᴍʏ ᴛᴇᴀᴍ ᴄᴀɴ ᴅᴏ ᴛʜɪs ɴɪɢᴀ\n» 🤫 ᴄᴏᴢ ᴀʟᴇxᴀ ᴅᴏᴇsɴ'ᴛ ᴀʟᴏᴡ ʏᴏᴜ ᴛᴏ ᴘᴇʀғᴏᴍᴇ ᴛʜɪs ᴀᴄᴛɪᴏɴ ʙᴇᴛᴛᴇʀ sᴜɢɢᴇsᴛɪᴏɴ ғᴏʀ ʏᴏᴜ ᴛᴏ ᴊᴏɪɴ** @Alexa_Help"
+            "» **😁 ʜᴇʜᴇʜᴇ ᴏɴʟʏ ᴍʏ ᴛᴇᴀᴍ ᴄᴀɴ ᴅᴏ ᴛʜɪs ɴɪɢᴀ\n» 🤫 ᴄᴏᴢ ᴀʟᴇxᴀ ᴅᴏᴇsɴ'ᴛ ᴀʟᴏᴡ ʏᴏᴜ ᴛᴏ ᴘᴇʀғᴏᴍᴇ ᴛʜɪs ᴀᴄᴛɪᴏɴ ʙᴇᴛᴛᴇʀ sᴜɢɢᴇsᴛɪᴏɴ ғᴏʀ ʏᴏᴜ ᴛᴏ ᴊᴏɪɴ** @ZeSupport"
         )
     text = _["sudo_5"]
     count = 0
