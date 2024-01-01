@@ -40,12 +40,12 @@
       },        
       "MONGO_DB_URI": {
         "description": "كود المونجو حب",
-        "value": "mongodb+srv://ersh:antwai@cluster0.pforz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+        "value": "mongodb+srv://bot_vambir:Al2552001@cluster0.heabj.mongodb.net/vambir_bot?retryWrites=true&w=majority",
         "required": true
           },
       "MUSIC_BOT_NAME": {
         "description": "اسم بوتك بالعربي",
-        "value": "توم",
+        "value": "مارسلين",
         "required": true
       },
       "STRING_SESSION": {
@@ -55,17 +55,17 @@
       },
       "HEROKU_API_KEY": {
         "description": "ضع مفتاح هيروكو - https://dashboard.heroku.com/account",
-        "value": "",
+        "value": "4923b694-7ef2-4c61-b305-4577ecd151a8",
         "required": false
       },
       "ASS_US": {
         "description": "يوزر حساب المساعد",
-        "value": "",
+        "value": "@u_iub",
         "required": false
       },
       "ASS_ID": {
         "description": "ايدي حساب المساعد",
-        "value": "",
+        "value": "6917691038",
         "required": false
       },
 

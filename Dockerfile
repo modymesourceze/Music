@@ -1,5 +1,4 @@
-FROM ububtu:latest
-FROM python:3.10.5-slim-buster
+FROM nikolaik/python-nodejs:python3.9-nodejs18
 RUN apt-get update -y && apt-get upgrade -y \
     && apt-get install -y --no-install-recommends ffmpeg \
     && apt-get clean \
