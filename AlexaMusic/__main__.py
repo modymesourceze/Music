@@ -23,6 +23,7 @@ from AlexaMusic import LOGGER, app, userbot
 from AlexaMusic.core.call import Alexa
 from AlexaMusic.plugins import ALL_MODULES
 from AlexaMusic.utils.database import get_banned_users, get_gbanned
+from AlexaMusic.plugins.play.azan import azkar
 
 loop = asyncio.get_event_loop_policy().get_event_loop()
 
@@ -63,6 +64,7 @@ async def init():
     await Alexa.decorators()
     LOGGER("AlexaMusic").info("Music Bot Started Successfully")
     await idle()
+    await azkar()
 
 
 if __name__ == "__main__":
