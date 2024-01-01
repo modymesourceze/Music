@@ -1,13 +1,12 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+#
+# Copyright (C) 2021-2022 by Alexa_Help@Github, < https://github.com/Jankarikiduniya >.
+# A Powerful Music Bot Property Of Rocks Indian Largest Chatting Group
 
-""""
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
-
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
+# Kanged By © @Dr_Asad_Ali
+# Rocks © @Shayri_Music_Lovers
+# Owner Asad Ali
+# Harshit Sharma
+# All rights reserved. © Alisha © Alexa © Yukki
 
 
 from pyrogram.types import (
@@ -48,22 +47,22 @@ async def inline_query_handler(client, query):
                 [
                     [
                         InlineKeyboardButton(
-                            text="• ʏᴏᴜᴛᴜʙᴇ •",
+                            text="‹ اليوتيوب ›",
                             url=link,
                         )
                     ],
                 ]
             )
             searched_text = f"""
-📌**ᴛɪᴛʟᴇ:** [{title}]({link})
+**اسم الفيديو : ‹ ** [{title}]({link}) ›
 
-⏳**ᴅᴜʀᴀᴛɪᴏɴ:** {duration} Mins
-👀**ᴠɪᴇᴡs:** `{views}`
-⏰**ᴩᴜʙʟɪsʜᴇᴅ ᴏɴ:** {published}
-🎥**ᴄʜᴀɴɴᴇʟ:** {channel}
-📎**ᴄʜᴀɴɴᴇʟ ʟɪɴᴋ:** [ᴠɪsɪᴛ ᴄʜᴀɴɴᴇʟ]({channellink})
+**مده الفيديو : ‹** {duration} Mins ›
+**المشاهدات : ‹** `{views}` ›
+**وقت النشر : ‹** {published} ›
+**اسم القناة : ‹** {channel} ›
+**رابط القناة :** [‹ اضغط هنا ›]({channellink})
 
-💖 ** sᴇᴀʀᴄʜ ᴩᴏᴡᴇʀᴇᴅ ʙʏ {MUSIC_BOT_NAME} **"""
+**‹ تم البحث بواسطة : {MUSIC_BOT_NAME} ›**"""
             answers.append(
                 InlineQueryResultPhoto(
                     photo_url=thumbnail,

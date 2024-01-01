@@ -1,19 +1,7 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
-
-""""
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
-
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
-
-
 import asyncio
 
 from pyrogram import filters
-from pyrogram import enums, filters
+from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from youtubesearchpython.__future__ import VideosSearch
 
@@ -44,7 +32,10 @@ loop = asyncio.get_running_loop()
 
 
 @app.on_message(
-    filters.command(get_command("START_COMMAND")) & filters.private & ~BANNED_USERS
+    filters.command(get_command("START_COMMAND"))
+    & filters.private
+    & ~filters.edited
+    & ~BANNED_USERS
 )
 @LanguageStart
 async def start_comm(client, message: Message, _):
@@ -94,7 +85,7 @@ async def start_comm(client, message: Message, _):
                     details = stats.get(vidid)
                     title = (details["title"][:35]).title()
                     if vidid == "telegram":
-                        msg += f"🔗[ᴛᴇʟᴇɢʀᴀᴍ ᴍᴇᴅɪᴀ](https://t.me/Shayri_Music_Lovers) ** ᴩʟᴀʏᴇᴅ {count} ᴛɪᴍᴇs**\n\n"
+                        msg += f"🔗[ᴛᴇʟᴇɢʀᴀᴍ ᴍᴇᴅɪᴀ](https://t.me/Source_Ze) ** ᴩʟᴀʏᴇᴅ {count} ᴛɪᴍᴇs**\n\n"
                     else:
                         msg += f"🔗 [{title}](https://www.youtube.com/watch?v={vidid}) ** played {count} times**\n\n"
                 msg = _["ustats_2"].format(tot, tota, limit) + msg
@@ -116,7 +107,7 @@ async def start_comm(client, message: Message, _):
                 sender_name = message.from_user.first_name
                 return await app.send_message(
                     config.LOG_GROUP_ID,
-                    f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ ᴛᴏ ᴄʜᴇᴄᴋ <code>sᴜᴅᴏʟɪsᴛ</code>\n\n**ᴜsᴇʀ ɪᴅ:** {sender_id}\n**ᴜsᴇʀɴᴀᴍᴇ:** {sender_name}",
+                    f" تم دخول عضو جديدالى البوت \n{message.from_user.mention} <code>sᴜᴅᴏʟɪsᴛ</code>\n\n**الايدي :** {sender_id}\n**المعرف :** {sender_name}",
                 )
             return
         if name[0:3] == "lyr":
@@ -130,7 +121,7 @@ async def start_comm(client, message: Message, _):
         if name[0:3] == "del":
             await del_plist_msg(client=client, message=message, _=_)
         if name[0:3] == "inf":
-            m = await message.reply_text("🔎")
+            m = await message.reply_text("**🔎 حسنا جاري البحث!**")
             query = (str(name)).replace("info_", "", 1)
             query = f"https://www.youtube.com/watch?v={query}"
             results = VideosSearch(query, limit=1)
@@ -144,23 +135,23 @@ async def start_comm(client, message: Message, _):
                 link = result["link"]
                 published = result["publishedTime"]
             searched_text = f"""
-😲**ᴛʀᴀᴄᴋ ɪɴғᴏʀɴᴀᴛɪᴏɴ**😲
+**‹ معلومات الفيديو ⤈**
 
-📌**ᴛɪᴛʟᴇ:** {title}
+**اسم الفيديو : ‹** {title} ›
 
-⏳**ᴅᴜʀᴀᴛɪᴏɴ:** {duration} ᴍɪɴᴜᴛᴇs
-👀**ᴠɪᴇᴡs:** `{views}`
-⏰**ᴩᴜʙʟɪsʜᴇᴅ ᴏɴ:** {published}
-🎥**ᴄʜᴀɴɴᴇʟ:** {channel}
-📎**ᴄʜᴀɴɴᴇʟ ʟɪɴᴋ:** [ᴠɪsɪᴛ ᴄʜᴀɴɴᴇʟ]({channellink})
-🔗**ʟɪɴᴋ:** [ᴡᴀᴛᴄʜ ᴏɴ ʏᴏᴜᴛᴜʙᴇ]({link})
+**مده الفيديو : ‹** {duration} ›
+**المشاهدات : ‹** {views} ›
+**وقت النشر : ‹** {published} ›
+**اسم القناة : ‹** {channel} ›
+**رابط القناة :** [ ‹ اضغط هنا ›]({channellink})
+**رابط الفيديو : ** [ ‹ اضغط هنا ›]({link})
 
-💖 sᴇᴀʀᴄʜ ᴩᴏᴡᴇʀᴇᴅ ʙʏ {config.MUSIC_BOT_NAME}"""
+‹ تم البحث بواسطة : {config.MUSIC_BOT_NAME} ›"""
             key = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(text="• ʏᴏᴜᴛᴜʙᴇ •", url=f"{link}"),
-                        InlineKeyboardButton(text="• ᴄʟᴏsᴇ •", callback_data="close"),
+                        InlineKeyboardButton(text="‹ مشاهده الفيديو › ", url=f"{link}"),
+                        InlineKeyboardButton(text="‹ اغلاق القائمه ›", callback_data="close"),
                     ],
                 ]
             )
@@ -169,7 +160,7 @@ async def start_comm(client, message: Message, _):
                 message.chat.id,
                 photo=thumbnail,
                 caption=searched_text,
-                parse_mode=enums.ParseMode.MARKDOWN,
+                parse_mode="markdown",
                 reply_markup=key,
             )
             if await is_on_off(config.LOG):
@@ -177,7 +168,7 @@ async def start_comm(client, message: Message, _):
                 sender_name = message.from_user.first_name
                 return await app.send_message(
                     config.LOG_GROUP_ID,
-                    f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ʙᴏᴛ ᴛᴏ ᴄʜᴇᴄᴋ <code>ᴛʀᴀᴄᴋ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</code>\n\n**ᴜsᴇʀ ɪᴅ:** {sender_id}\n**ᴜsᴇʀɴᴀᴍᴇ:** {sender_name}",
+                    f"تم دخول عضو جديدالى البوت \n{message.from_user.mention} <code>sᴜᴅᴏʟɪsᴛ</code>\n\n**الايدي :** {sender_id}\n**المعرف :** {sender_name}",
                 )
     else:
         try:
@@ -195,25 +186,23 @@ async def start_comm(client, message: Message, _):
                 )
             except:
                 await message.reply_text(
-                    _["start_2"].format(config.MUSIC_BOT_NAME),
-                    reply_markup=InlineKeyboardMarkup(out),
-                )
-        else:
-            await message.reply_text(
                 _["start_2"].format(config.MUSIC_BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(out),
-            )
+                )
         if await is_on_off(config.LOG):
             sender_id = message.from_user.id
             sender_name = message.from_user.first_name
             return await app.send_message(
                 config.LOG_GROUP_ID,
-                f"{message.from_user.mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ʏᴏᴜʀ ʙᴏᴛ.\n\n**ᴜsᴇʀ ɪᴅ:** {sender_id}\n**ᴜsᴇʀɴᴀᴍᴇ:** {sender_name}",
+                f"قام بأرسال بدء الى البوت - {message.from_user.mention}\n\n**الايدي :** {sender_id}\n**المعرف :** {sender_name}",
             )
 
 
 @app.on_message(
-    filters.command(get_command("START_COMMAND")) & filters.group & ~BANNED_USERS
+    filters.command(get_command("START_COMMAND"))
+    & filters.group
+    & ~filters.edited
+    & ~BANNED_USERS
 )
 @LanguageStart
 async def testbot(client, message: Message, _):
@@ -244,7 +233,7 @@ async def welcome(client, message: Message):
             _ = get_string(language)
             if member.id == app.id:
                 chat_type = message.chat.type
-                if chat_type != enums.ChatType.SUPERGROUP:
+                if chat_type != "supergroup":
                     await message.reply_text(_["start_6"])
                     return await app.leave_chat(message.chat.id)
                 if chat_id in await blacklisted_chats():
@@ -275,31 +264,3 @@ async def welcome(client, message: Message):
             return
         except:
             return
-
-
-@app.on_message(commandpro(["/alive", "Alexa"]))
-async def alive(client, message: Message):
-    await message.reply_photo(
-        photo=f"https://telegra.ph/file/125f531d44a9999290cac.jpg",
-        caption=f"""━━━━━━━━━━━━━━━━━━━━━━━━\n\n✪ ʜᴇʟʟᴏ, ᴀʟᴇxᴀ ɪs ᴡᴏʀᴋɪɴɢ ᴀɴᴅ ғᴜɴᴄᴛɪᴏɴɪɴɢ ᴘʀᴏᴘᴇʀʟʏ\n✪ ᴛʜᴀɴᴋs ᴛᴏ ʏᴜᴋᴋɪ ᴛᴇᴀᴍ 🌼 ..\n\n┏━━━━━━━━━━━━━━━━━┓\n┣★ ᴏᴡɴᴇʀ    : [ᴀsᴀᴅ ᴀʟɪ](https://t.me/Dr_Asad_Ali)\n┣★ ᴜᴘᴅᴀᴛᴇs › : [ᴀʟᴇxᴀ ʜᴇʟᴘ](https://t.me/Alexa_BotUpdates)┓\n┣★ ʀᴇᴘᴏ › : [ᴀʟᴇxᴀ ʀᴇᴘᴏ](https://github.com/jankarikiduniya/AlexaMusic)\n┗━━━━━━━━━━━━━━━━━┛\n\n💞 ɪғ ʏᴏᴜ ʜᴀᴠᴇ ᴀɴʏ ǫᴜᴇsᴛɪᴏɴs ᴛʜᴇɴ\nᴅᴍ ᴛᴏ ᴍʏ [ᴏᴡɴᴇʀ](https://t.me/Jankari_Ki_Duniya) ᴍᴀᴋᴇ sᴜʀᴇ ᴛᴏ sᴛᴀʀ ᴏᴜʀ ᴘʀᴏᴊᴇᴄᴛ ...\n\n━━━━━━━━━━━━━━━━━━━━━━━━""",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🌼 ᴀʟᴇxᴀ ᴄʜᴀᴛ 💮", url=f"https://t.me/Alexa_Help")]]
-        ),
-    )
-
-
-@app.on_message(commandpro(["/verify", "alexaverification"]))
-async def verify(client, message: Message):
-    if await is_served_user(message.from_user.id):
-        await message.reply_text(
-            text="😂 ᴅᴇᴀʀ ʏᴏᴜ ᴀʀᴇ ᴀʟʀᴇᴀᴅʏ ᴠᴇʀɪғɪᴇᴅ",
-        )
-        return
-    await add_served_user(message.from_user.id)
-    await message.reply_photo(
-        photo=f"https://telegra.ph/file/7f08acd78577f99f60ff5.png",
-        caption=f"""━━━━━━━━━━━━━━━━━━━━━━━━\n\n✪ **ᴄᴏɴɢʀᴀᴛᴜʟᴀᴛɪᴏɴ** 🎉\n✪ ɴᴏᴡ ʏᴏᴜ ᴀʀᴇ ᴀʟᴇxᴀ ᴠᴇʀɪғɪᴇᴅ ᴍᴇᴍʙᴇʀ ɢᴏ ʙᴀᴄᴋ ᴀɴᴅ ᴇɴᴊᴏʏ ᴏᴜʀ sᴇʀᴠɪᴄᴇ ᴀɴᴅ ᴘʟᴀʏ ᴍᴜsɪᴄ 🌼 ..\n\n━━━━━━━━━━━━━━━━━━━━━━━━""",
-        reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("🌼 ᴀʟᴇxᴀ ᴄʜᴀᴛ 💮", url=f"https://t.me/Alexa_Help")]]
-        ),
-    )
