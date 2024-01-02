@@ -1,13 +1,12 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+#
+# Copyright (C) 2021-2022 by Alexa_Help@Github, < https://github.com/Jankarikiduniya >.
+# A Powerful Music Bot Property Of Rocks Indian Largest Chatting Group
 
-""""
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
-
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
+# Kanged By © @Dr_Asad_Ali
+# Rocks © @Shayri_Music_Lovers
+# Owner Asad Ali
+# Harshit Sharma
+# All rights reserved. © Alisha © Alexa © Yukki
 
 
 from pyrogram import filters
@@ -22,7 +21,6 @@ from pyrogram.types import (
 from config import BANNED_USERS, CLEANMODE_DELETE_MINS, MUSIC_BOT_NAME, OWNER_ID
 from strings import get_command
 from AlexaMusic import app
-from pyrogram.enums import ChatType
 from AlexaMusic.utils.database import (
     add_nonadmin_chat,
     cleanmode_off,
@@ -63,7 +61,9 @@ from AlexaMusic.utils.inline.start import private_panel
 SETTINGS_COMMAND = get_command("SETTINGS_COMMAND")
 
 
-@app.on_message(filters.command(SETTINGS_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(
+    filters.command(SETTINGS_COMMAND) & filters.group & ~filters.edited & ~BANNED_USERS
+)
 @language
 async def settings_mar(client, message: Message, _):
     buttons = setting_markup(_)
@@ -97,7 +97,7 @@ async def settings_back_markup(client, CallbackQuery: CallbackQuery, _):
         await CallbackQuery.answer()
     except:
         pass
-    if CallbackQuery.message.chat.type == ChatType.PRIVATE:
+    if CallbackQuery.message.chat.type == "private":
         try:
             await app.resolve_peer(OWNER_ID[0])
             OWNER = OWNER_ID[0]
