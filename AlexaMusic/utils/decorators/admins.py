@@ -1,17 +1,16 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+#
+# Copyright (C) 2021-2022 by Alexa_Help@Github, < https://github.com/Jankarikiduniya >.
+# A Powerful Music Bot Property Of Rocks Indian Largest Chatting Group
 
-""""
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
-
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
+# Kanged By © @Dr_Asad_Ali
+# Rocks © @Shayri_Music_Lovers
+# Owner Asad Ali
+# Harshit Sharma
+# All rights reserved. © Alisha © Alexa © Yukki
 
 
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
-from pyrogram.enums import ChatType
+
 from config import adminlist
 from strings import get_string
 from AlexaMusic import app
@@ -120,7 +119,7 @@ def AdminActual(mystic):
                 )
             except:
                 return
-            if not member.privileges.can_manage_video_chats:
+            if not member.can_manage_voice_chats:
                 return await message.reply(_["general_5"])
         return await mystic(client, message, _)
 
@@ -140,7 +139,7 @@ def ActualAdminCB(mystic):
             _ = get_string(language)
         except:
             _ = get_string("en")
-        if CallbackQuery.message.chat.type == ChatType.PRIVATE:
+        if CallbackQuery.message.chat.type == "private":
             return await mystic(client, CallbackQuery, _)
         is_non_admin = await is_nonadmin_chat(CallbackQuery.message.chat.id)
         if not is_non_admin:
@@ -151,7 +150,7 @@ def ActualAdminCB(mystic):
                 )
             except:
                 return await CallbackQuery.answer(_["general_5"], show_alert=True)
-            if not a.privileges.can_manage_video_chats:
+            if not a.can_manage_voice_chats:
                 if CallbackQuery.from_user.id not in SUDOERS:
                     token = await int_to_alpha(CallbackQuery.from_user.id)
                     _check = await get_authuser_names(CallbackQuery.from_user.id)
