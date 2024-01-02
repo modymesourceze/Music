@@ -1,28 +1,33 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+#
+# Copyright (C) 2021-2022 by Alexa_Help@Github, < https://github.com/Jankarikiduniya >.
+# A Powerful Music Bot Property Of Rocks Indian Largest Chatting Group
 
-""""
-TheTeamAlexa is a project of Telegram bots with a variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
+# Kanged By © @Dr_Asad_Ali
+# Rocks © @Shayri_Music_Lovers
+# Owner Asad Ali
+# Harshit Sharma
+# All rights reserved. © Alisha © Alexa © Yukki
 
-This program is free software: you can redistribute it and can modify
-as you want or you can collab if you have new ideas.
-"""
 
-from AlexaMusic import app
 from pyrogram import filters
+from pyrogram.types import Message
+
 from config import BANNED_USERS
 from strings import get_command
-from pyrogram.types import Message
+from AlexaMusic import app
 from AlexaMusic.utils.database import set_cmode
 from AlexaMusic.utils.decorators.admins import AdminActual
-from pyrogram.enums import ChatMembersFilter, ChatMemberStatus, ChatType
 
 ### Multi-Lang Commands
 CHANNELPLAY_COMMAND = get_command("CHANNELPLAY_COMMAND")
 
 
-@app.on_message(filters.command(CHANNELPLAY_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(
+    filters.command(CHANNELPLAY_COMMAND)
+    & filters.group
+    & ~filters.edited
+    & ~BANNED_USERS
+)
 @AdminActual
 async def playmode_(client, message: Message, _):
     if len(message.command) < 2:
@@ -46,21 +51,18 @@ async def playmode_(client, message: Message, _):
     else:
         try:
             chat = await app.get_chat(query)
-        except Exception as e:
-            print(f"Error: {e}")
+        except:
             return await message.reply_text(_["cplay_4"])
-        if chat.type != ChatType.CHANNEL:
+        if chat.type != "channel":
             return await message.reply_text(_["cplay_5"])
         try:
-            async for user in app.get_chat_members(
-                chat.id, filter=ChatMembersFilter.ADMINISTRATORS
-            ):
-                if user.status == ChatMemberStatus.OWNER:
-                    creatorusername = user.user.username
-                    creatorid = user.user.id
-        except Exception as e:
-            print(f"Error: {e}")
+            admins = await app.get_chat_members(chat.id, filter="administrators")
+        except:
             return await message.reply_text(_["cplay_4"])
+        for users in admins:
+            if users.status == "creator":
+                creatorusername = users.user.username
+                creatorid = users.user.id
         if creatorid != message.from_user.id:
             return await message.reply_text(
                 _["cplay_6"].format(chat.title, creatorusername)
