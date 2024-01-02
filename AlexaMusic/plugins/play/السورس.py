@@ -3,7 +3,6 @@ import asyncio
 import os
 import time
 import requests
-from config import USER_OWNER, OWNER_ID, SUPPORT_CHANNEL
 from pyrogram import filters
 import random
 from pyrogram import Client
