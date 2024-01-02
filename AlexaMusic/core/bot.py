@@ -1,21 +1,21 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+#
+# Copyright (C) 2021-2022 by Alexa_Help@Github, < https://github.com/Jankarikiduniya >.
+# A Powerful Music Bot Property Of Rocks Indian Largest Chatting Group
 
-""""
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
-
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
+# Kanged By © @Dr_Asad_Ali
+# Rocks © @Shayri_Music_Lovers
+# Owner Asad Ali
+# Harshit Sharma
+# All rights reserved. © Alexa © Yukki
 
 
 import sys
 
 from pyrogram import Client
+
 import config
+
 from ..logging import LOGGER
-from pyrogram.enums import ChatMemberStatus
 
 
 class AlexaBot(Client):
@@ -39,11 +39,11 @@ class AlexaBot(Client):
             )
         except:
             LOGGER(__name__).error(
-                "فشل الروبوت في الوصول إلى مجموعة السجل. تأكد من إضافة الروبوت الخاص بك إلى قناة السجل الخاصة بك وترقيته كمسؤول!"
+                "فشل الروبوت في الوصول إلى مجموعة السجل. تأكد من إضافة الروبوت الخاص بك إلى قناة السجل الخاصة بك وترقيته كمسؤول"
             )
             sys.exit()
         a = await self.get_chat_member(config.LOG_GROUP_ID, self.id)
-        if a.status != ChatMemberStatus.ADMINISTRATOR:
+        if a.status != "administrator":
             LOGGER(__name__).error("يرجى رفع البوت مشرف في مجموعة السجل")
             sys.exit()
         if get_me.last_name:
