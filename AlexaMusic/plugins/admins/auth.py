@@ -1,13 +1,12 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+#
+# Copyright (C) 2021-2022 by Alexa_Help@Github, < https://github.com/Jankarikiduniya >.
+# A Powerful Music Bot Property Of Rocks Indian Largest Chatting Group
 
-""""
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
-
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
+# Kanged By © @Dr_Asad_Ali
+# Rocks © @Shayri_Music_Lovers
+# Owner Asad Ali
+# Harshit Sharma
+# All rights reserved. © Alisha © Alexa © Yukki
 
 
 from pyrogram import filters
@@ -31,7 +30,9 @@ UNAUTH_COMMAND = get_command("UNAUTH_COMMAND")
 AUTHUSERS_COMMAND = get_command("AUTHUSERS_COMMAND")
 
 
-@app.on_message(filters.command(AUTH_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(
+    filters.command(AUTH_COMMAND) & filters.group & ~filters.edited & ~BANNED_USERS
+)
 @AdminActual
 async def auth(client, message: Message, _):
     if not message.reply_to_message:
@@ -93,7 +94,9 @@ async def auth(client, message: Message, _):
         await message.reply_text(_["auth_3"])
 
 
-@app.on_message(filters.command(UNAUTH_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(
+    filters.command(UNAUTH_COMMAND) & filters.group & ~filters.edited & ~BANNED_USERS
+)
 @AdminActual
 async def unauthusers(client, message: Message, _):
     if not message.reply_to_message:
@@ -126,7 +129,9 @@ async def unauthusers(client, message: Message, _):
         return await message.reply_text(_["auth_5"])
 
 
-@app.on_message(filters.command(AUTHUSERS_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(
+    filters.command(AUTHUSERS_COMMAND) & filters.group & ~filters.edited & ~BANNED_USERS
+)
 @language
 async def authusers(client, message: Message, _):
     _playlist = await get_authuser_names(message.chat.id)

@@ -1,13 +1,12 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+#
+# Copyright (C) 2021-2022 by Alexa_Help@Github, < https://github.com/Jankarikiduniya >.
+# A Powerful Music Bot Property Of Rocks Indian Largest Chatting Group
 
-""""
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
-
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
+# Kanged By © @Dr_Asad_Ali
+# Rocks © @Shayri_Music_Lovers
+# Owner Asad Ali
+# Harshit Sharma
+# All rights reserved. © Alisha © Alexa © YukkiAlexa
 
 
 from pyrogram import filters
@@ -24,7 +23,9 @@ from AlexaMusic.utils.decorators import AdminRightsCheck
 PAUSE_COMMAND = get_command("PAUSE_COMMAND")
 
 
-@app.on_message(filters.command(PAUSE_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(
+    filters.command(PAUSE_COMMAND) & filters.group & ~filters.edited & ~BANNED_USERS
+)
 @AdminRightsCheck
 async def pause_admin(cli, message: Message, _, chat_id):
     if not len(message.command) == 1:
