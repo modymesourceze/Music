@@ -1,20 +1,20 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+#
+# Copyright (C) 2021-2022 by Alexa_Help@Github, < https://github.com/Jankarikiduniya >.
+# A Powerful Music Bot Property Of Rocks Indian Largest Chatting Group
 
-""""
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
+# Kanged By © @Dr_Asad_Ali
+# Rocks © @Shayri_Music_Lovers
+# Owner Asad Ali
+# Harshit Sharma
+# All rights reserved. © Alisha © Alexa © YUKKI
 
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
 
 import asyncio
-from pyrogram.enums import ChatType
+from datetime import datetime
+
 import config
 from AlexaMusic import app
 from AlexaMusic.core.call import Alexa, autoend
-from datetime import datetime, timedelta
 from AlexaMusic.utils.database import get_client, is_active_chat, is_autoend
 
 
@@ -26,12 +26,12 @@ async def auto_leave():
             for num in assistants:
                 client = await get_client(num)
                 try:
-                    async for i in client.get_dialogs():
+                    async for i in client.iter_dialogs():
                         chat_type = i.chat.type
                         if chat_type in [
-                            ChatType.SUPERGROUP,
-                            ChatType.GROUP,
-                            ChatType.CHANNEL,
+                            "supergroup",
+                            "group",
+                            "channel",
                         ]:
                             chat_id = i.chat.id
                             if (
