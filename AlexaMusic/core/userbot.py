@@ -1,13 +1,12 @@
-# Copyright (C) 2023 by Source_Ze @ Github, < https://github.com/ZeSupport >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+#
+# Copyright (C) 2021-2022 by ZeSupport@Github, < https://github.com/Jankarikiduniya >.
+# A Powerful Music Bot Property Of Rocks Indian Largest Chatting Group
 
-""""
-ZeSupport is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/ZeSupport>
-
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
+# Kanged By © @Dr_Asad_Ali
+# Rocks © @Shayri_Music_Lovers
+# Owner Asad Ali
+# Harshit Sharma
+# All rights reserved. © Alisha © Alexa © Yukki
 
 
 import sys
@@ -25,38 +24,33 @@ assistantids = []
 class Userbot(Client):
     def __init__(self):
         self.one = Client(
-            name="AlexaOne",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_string=str(config.STRING1),
+            session_name=str(config.STRING1),
             no_updates=True,
         )
         self.two = Client(
-            name="AlexaTwo",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_string=str(config.STRING2),
+            session_name=str(config.STRING2),
             no_updates=True,
         )
         self.three = Client(
-            name="AlexaThree",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_string=str(config.STRING3),
+            session_name=str(config.STRING3),
             no_updates=True,
         )
         self.four = Client(
-            name="AlexaFour",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_string=str(config.STRING4),
+            session_name=str(config.STRING4),
             no_updates=True,
         )
         self.five = Client(
-            name="AlexaFive",
             api_id=config.API_ID,
             api_hash=config.API_HASH,
-            session_string=str(config.STRING5),
+            session_name=str(config.STRING5),
             no_updates=True,
         )
 
@@ -65,9 +59,7 @@ class Userbot(Client):
         if config.STRING1:
             await self.one.start()
             try:
-                await self.one.join_chat("Source_Ze")
                 await self.one.join_chat("ZeSupport")
-                await self.one.join_chat("VISA_ZE")
             except:
                 pass
             assistants.append(1)
@@ -78,7 +70,7 @@ class Userbot(Client):
                 )
             except:
                 LOGGER(__name__).error(
-                    f"فشل حساب المساعد 1 في الوصول إلى مجموعة السجل. تأكد من إضافة مساعدك إلى مجموعة السجل الخاصة بك وترقيتك كمسؤول! "
+                    f"فشل حساب المساعد 1 في الوصول إلى مجموعة السجل. تأكد من إضافة مساعدك إلى مجموعة السجل الخاصة بك وترقيتك كمسؤول!"
                 )
                 sys.exit()
             get_me = await self.one.get_me()
@@ -89,13 +81,11 @@ class Userbot(Client):
                 self.one.name = get_me.first_name + " " + get_me.last_name
             else:
                 self.one.name = get_me.first_name
-            LOGGER(__name__).info(f"بدأ المساعد الاول كـ {self.one.name}")
+            LOGGER(__name__).info(f"Assistant Started as {self.one.name}")
         if config.STRING2:
             await self.two.start()
             try:
-                await self.two.join_chat("Source_Ze")
                 await self.two.join_chat("ZeSupport")
-                await self.two.join_chat("VISA_ZE")
             except:
                 pass
             assistants.append(2)
@@ -106,7 +96,7 @@ class Userbot(Client):
                 )
             except:
                 LOGGER(__name__).error(
-                    f"فشل حساب المساعد 2 في الوصول إلى مجموعة السجل. تأكد من إضافة مساعدك إلى مجموعة السجل الخاصة بك وترقيتك كمسؤول!"
+                    f"Assistant Account 2 has failed to access the log Group. Make sure that you have added your assistant to your log group and promoted as admin ! "
                 )
                 sys.exit()
             get_me = await self.two.get_me()
@@ -121,9 +111,7 @@ class Userbot(Client):
         if config.STRING3:
             await self.three.start()
             try:
-                await self.three.join_chat("Source_Ze")
                 await self.three.join_chat("ZeSupport")
-                await self.three.join_chat("VISA_ZE")
             except:
                 pass
             assistants.append(3)
@@ -134,7 +122,7 @@ class Userbot(Client):
                 )
             except:
                 LOGGER(__name__).error(
-                    f"فشل حساب المساعد 3 في الوصول إلى مجموعة السجل. تأكد من إضافة مساعدك إلى مجموعة السجل الخاصة بك وترقيتك كمسؤول! "
+                    f"Assistant Account 3 has failed to access the log Group. Make sure that you have added your assistant to your log group and promoted as admin ! "
                 )
                 sys.exit()
             get_me = await self.three.get_me()
@@ -145,13 +133,11 @@ class Userbot(Client):
                 self.three.name = get_me.first_name + " " + get_me.last_name
             else:
                 self.three.name = get_me.first_name
-            LOGGER(__name__).info(f"بدأ المساعد الثالث كـ {self.three.name}")
+            LOGGER(__name__).info(f"Assistant Three Started as {self.three.name}")
         if config.STRING4:
             await self.four.start()
             try:
-                await self.four.join_chat("Source_Ze")
                 await self.four.join_chat("ZeSupport")
-                await self.four.join_chat("VISA_ZE")
             except:
                 pass
             assistants.append(4)
@@ -162,7 +148,7 @@ class Userbot(Client):
                 )
             except:
                 LOGGER(__name__).error(
-                    f"فشل حساب المساعد 4 في الوصول إلى مجموعة السجل. تأكد من إضافة مساعدك إلى مجموعة السجل الخاصة بك وترقيتك كمسؤول! "
+                    f"Assistant Account 4 has failed to access the log Group. Make sure that you have added your assistant to your log group and promoted as admin ! "
                 )
                 sys.exit()
             get_me = await self.four.get_me()
@@ -173,13 +159,11 @@ class Userbot(Client):
                 self.four.name = get_me.first_name + " " + get_me.last_name
             else:
                 self.four.name = get_me.first_name
-            LOGGER(__name__).info(f"بدأ المساعد الرابع كـ {self.four.name}")
+            LOGGER(__name__).info(f"Assistant Four Started as {self.four.name}")
         if config.STRING5:
             await self.five.start()
             try:
-                await self.five.join_chat("Source_Ze")
                 await self.five.join_chat("ZeSupport")
-                await self.five.join_chat("VISA_ZE")
             except:
                 pass
             assistants.append(5)
@@ -190,7 +174,7 @@ class Userbot(Client):
                 )
             except:
                 LOGGER(__name__).error(
-                    f"فشل حساب المساعد 5 في الوصول إلى مجموعة السجل. تأكد من إضافة مساعدك إلى مجموعة السجل الخاصة بك وترقيتك كمسؤول!"
+                    f"Assistant Account 5 has failed to access the log Group. Make sure that you have added your assistant to your log group and promoted as admin ! "
                 )
                 sys.exit()
             get_me = await self.five.get_me()
@@ -201,4 +185,4 @@ class Userbot(Client):
                 self.five.name = get_me.first_name + " " + get_me.last_name
             else:
                 self.five.name = get_me.first_name
-            LOGGER(__name__).info(f"بدأ المساعد الخامس كـ {self.five.name}")
+            LOGGER(__name__).info(f"Assistant Five Started as {self.five.name}")
