@@ -1,19 +1,17 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
+#
+# Copyright (C) 2021-2022 by Alexa_Help@Github, < https://github.com/Jankarikiduniya >.
+# A Powerful Music Bot Property Of Rocks Indian Largest Chatting Group
 
-""""
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
-
-This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
-"""
+# Kanged By © @Dr_Asad_Ali
+# Rocks © @Shayri_Music_Lovers
+# Owner Asad Ali
+# Harshit Sharma
+# All rights reserved. © Alisha © Alexa
 
 
 import asyncio
 
 from pyrogram import filters
-from pyrogram.enums import ChatMembersFilter
 from pyrogram.types import CallbackQuery, Message
 
 from config import BANNED_USERS, MUSIC_BOT_NAME, adminlist, lyrical
@@ -30,16 +28,14 @@ RELOAD_COMMAND = get_command("RELOAD_COMMAND")
 RESTART_COMMAND = get_command("RESTART_COMMAND")
 
 
-@app.on_message(filters.command(RELOAD_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(
+    filters.command(RELOAD_COMMAND) & filters.group & ~filters.edited & ~BANNED_USERS
+)
 @language
 async def reload_admin_cache(client, message: Message, _):
     try:
         chat_id = message.chat.id
-        admins = []
-        async for m in app.get_chat_members(
-            chat_id, filter=ChatMembersFilter.ADMINISTRATORS
-        ):
-            admins.append(m)
+        admins = await app.get_chat_members(chat_id, filter="administrators")
         authusers = await get_authuser_names(chat_id)
         adminlist[chat_id] = []
         for user in admins:
@@ -55,7 +51,9 @@ async def reload_admin_cache(client, message: Message, _):
         )
 
 
-@app.on_message(filters.command(RESTART_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(
+    filters.command(RESTART_COMMAND) & filters.group & ~filters.edited & ~BANNED_USERS
+)
 @AdminActual
 async def restartbot(client, message: Message, _):
     mystic = await message.reply_text(
@@ -104,7 +102,7 @@ async def close_menu(_, CallbackQuery):
 @app.on_callback_query(filters.regex("stop_downloading") & ~BANNED_USERS)
 @ActualAdminCB
 async def stop_download(client, CallbackQuery: CallbackQuery, _):
-    message_id = CallbackQuery.message.id
+    message_id = CallbackQuery.message.message_id
     task = lyrical.get(message_id)
     if not task:
         return await CallbackQuery.answer(
