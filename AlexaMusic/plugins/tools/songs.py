@@ -1,20 +1,18 @@
-# Copyright (C) 2023 by Alexa_Help @ Github, < https://github.com/TheTeamAlexa >
-# Subscribe On YT < Jankari Ki Duniya >. All rights reserved. © Alexa © Yukki.
-
 """"
-TheTeamAlexa is a project of Telegram bots with variety of purposes.
-Copyright (c) 2023 -present Team=Alexa <https://github.com/TheTeamAlexa>
+Alexa is a Telegram Audio and video streaming bot 
+Copyright (c) 2022 -present Team=Alexa <https://github.com/TheTeamAlexa>
 
 This program is free software: you can redistribute it and can modify
-as you want or you can collabe if you have new ideas.
+as you want.
 """
 
 import os
 import re
-
+from yt_dlp import YoutubeDL
 import yt_dlp
 from pykeyboard import InlineKeyboard
-from pyrogram import enums, filters
+from pyrogram import filters
+from strings.filters import command
 from pyrogram.types import (
     InlineKeyboardButton,
     InlineKeyboardMarkup,
@@ -30,11 +28,14 @@ from AlexaMusic.utils.decorators.language import language, languageCB
 from AlexaMusic.utils.formatters import convert_bytes
 from AlexaMusic.utils.inline.song import song_markup
 
+
 # Command
 SONG_COMMAND = get_command("SONG_COMMAND")
 
 
-@app.on_message(filters.command(SONG_COMMAND) & filters.group & ~BANNED_USERS)
+@app.on_message(
+    command(SONG_COMMAND) & filters.group & ~filters.edited & ~BANNED_USERS
+)
 @language
 async def song_commad_group(client, message: Message, _):
     upl = InlineKeyboardMarkup(
@@ -53,7 +54,9 @@ async def song_commad_group(client, message: Message, _):
 # Song Module
 
 
-@app.on_message(filters.command(SONG_COMMAND) & filters.private & ~BANNED_USERS)
+@app.on_message(
+    filters.command(SONG_COMMAND) & filters.private & ~filters.edited & ~BANNED_USERS
+)
 @language
 async def song_commad_private(client, message: Message, _):
     await message.delete()
@@ -174,7 +177,6 @@ async def song_helper_cb(client, CallbackQuery, _):
             print(e)
             return await CallbackQuery.edit_message_text(_["song_7"])
         keyboard = InlineKeyboard()
-        # AVC Formats Only [ Alexa MUSIC BOT ]
         done = [160, 133, 134, 135, 136, 137, 298, 299, 264, 304, 266]
         for x in formats_available:
             check = x["format"]
@@ -248,7 +250,7 @@ async def song_download_cb(client, CallbackQuery, _):
         await mystic.edit_text(_["song_11"])
         await app.send_chat_action(
             chat_id=CallbackQuery.message.chat.id,
-            action=enums.ChatAction.UPLOAD_VIDEO,
+            action="upload_video",
         )
         try:
             await CallbackQuery.edit_message_media(media=med)
@@ -277,7 +279,7 @@ async def song_download_cb(client, CallbackQuery, _):
         await mystic.edit_text(_["song_11"])
         await app.send_chat_action(
             chat_id=CallbackQuery.message.chat.id,
-            action=enums.ChatAction.UPLOAD_AUDIO,
+            action="upload_audio",
         )
         try:
             await CallbackQuery.edit_message_media(media=med)
