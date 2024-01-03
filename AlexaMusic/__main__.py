@@ -63,8 +63,8 @@ async def init():
         pass
     await Alexa.decorators()
     LOGGER("AlexaMusic").info("Music Bot Started Successfully")
-    await idle()
     await azkar()
+    await idle()
 
 
 if __name__ == "__main__":
