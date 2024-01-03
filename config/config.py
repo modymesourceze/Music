@@ -98,6 +98,10 @@ YAFA_CHANNEL = getenv(
    " YAFA_CHANNEL", "https://t.me/Source_Ze"
 )  # رابط قناتك
 
+ASS_ID = int(getenv("ASS_ID", ""))
+
+ASS_US = int(getenv("ASS_US", ""))
+
 STRING1 = getenv("STRING_SESSION", None)
 STRING2 = getenv("STRING_SESSION2", None)
 STRING3 = getenv("STRING_SESSION3", None)
