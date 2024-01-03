@@ -9,7 +9,7 @@ from pyrogram.types import InlineKeyboardButton
 
 from config import GITHUB_REPO, SUPPORT_CHANNEL, SUPPORT_GROUP
 from AlexaMusic import app
-from config import BANNED_USERS, MUSIC_BOT_NAME
+from config import BANNED_USERS, MUSIC_BOT_NAME, ASS_US, ASS_ID
 from AlexaMusic.misc import SUDOERS
 
 import re
